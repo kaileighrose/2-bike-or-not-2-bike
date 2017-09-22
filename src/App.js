@@ -1,4 +1,9 @@
+//Vendor
 import React, { Component } from 'react';
+//Components
+import TempForm from 'components/TempForm';
+import Results from 'components/Results';
+//Styles
 import './App.css';
 
 class App extends Component {
@@ -26,6 +31,9 @@ class App extends Component {
         <div className="App-Form"> 
           <TempForm />
         </div>
+        <div className="App-Results">
+          <Results />
+        </div>
         <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </div>
     );
@@ -39,30 +47,6 @@ class App extends Component {
         this.setState({ weather });
       }
     })
-  }
-}
-
-class TempForm extends Component {
-  render() {
-    return (
-
-    );
-  }
-
-  _handleSubmit(event) {
-    event.preventDefault();
-
-  }
-
-  this._min.value = '';
-  this._max.value = '';
-  this._risk.value = '';
-
-}
-
-class Results extends Component {
-  render() {
-
   }
 }
 
