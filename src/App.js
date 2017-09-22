@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -7,14 +6,30 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          
+          <h2>To Bike or Not to Bike?</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h3 className="App-intro">
+          That is the question. To get started, input your weather preferences below:
+        </h3>
+        <div className="App-Form"> 
+          <TempForm />
+        </div>
       </div>
     );
+  }
+}
+
+class TempForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+
+    };
+  }
+
+  render() {
+    return ();
   }
 }
 
