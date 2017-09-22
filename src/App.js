@@ -26,10 +26,11 @@ class App extends Component {
         <div className="App-Form"> 
           <TempForm />
         </div>
-      </div>
+        <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+        </div>
     );
   }
-
+//
   _fetchWeather() {
     $.ajax({
       method: 'GET',
@@ -57,6 +58,12 @@ class TempForm extends Component {
   this._max.value = '';
   this._risk.value = '';
 
+}
+
+class Results extends Component {
+  render() {
+
+  }
 }
 
 export default App;
