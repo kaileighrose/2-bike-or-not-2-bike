@@ -6,7 +6,6 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          
           <h2>To Bike or Not to Bike?</h2>
         </div>
         <h3 className="App-intro">
@@ -29,7 +28,24 @@ class TempForm extends Component {
   }
 
   render() {
-    return ();
+    return (
+
+    );
+  }
+
+  _handleSubmit(event) {
+    event.preventDefault();
+
+  }
+
+  _fetchWeather() {
+    $.ajax({
+      method: 'GET',
+      url: 'https://1miudhz7a9.execute-api.us-east-1.amazonaws.com/dev/forecast/38.8899,77.0090',
+      success: (weather) => {
+        this.setState({ weather });
+      }
+    })
   }
 }
 
