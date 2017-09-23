@@ -1,8 +1,9 @@
 //Vendor
 import React, { Component } from 'react';
+import axios from 'axios';
 //Components
-import TempForm from 'components/TempForm';
-import Results from 'components/Results';
+import TempForm from './components/TempForm';
+import Results from './components/Results';
 //Styles
 import './App.css';
 
@@ -15,7 +16,7 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._fetchWeather();
   }
 
@@ -40,13 +41,11 @@ class App extends Component {
   }
 //
   _fetchWeather() {
-    $.ajax({
-      method: 'GET',
-      url: 'https://1miudhz7a9.execute-api.us-east-1.amazonaws.com/dev/forecast/38.8899,77.0090',
-      success: (weather) => {
+    axios.get('https://1miudhz7a9.execute-api.us-east-1.amazonaws.com/dev/forecast/38.8899,77.0090')
+      .then(res => {
+        const weather = res.hourly.data.children.map(obj => obj.data);
         this.setState({ weather });
-      }
-    })
+      });
   }
 }
 
