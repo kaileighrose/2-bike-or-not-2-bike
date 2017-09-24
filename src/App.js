@@ -43,7 +43,7 @@ class App extends Component {
   _fetchWeather() {
     axios.get('https://1miudhz7a9.execute-api.us-east-1.amazonaws.com/dev/forecast/38.8899,77.0090')
       .then(res => {
-        const weather = res.data.hourly.data.map(obj => obj);
+        const weather = res.data.hourly.data;
         this.setState({ weather });
       });
   }
