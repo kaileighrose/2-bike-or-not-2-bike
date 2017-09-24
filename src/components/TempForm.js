@@ -21,6 +21,9 @@ class TempForm extends Component {
           <label>  Maximum Chance of Rain: </label>
           <input type="number" placeholder="Max" ref={c => this._risk = c} />
         </div>
+        <p>{this.state._min} </p>
+        <p>{this.state._max} </p>
+        <p>{this.state._risk} </p>
         <div className="app-form-actions">
           <button type="submit">Check Weather</button>
         </div>
@@ -30,9 +33,9 @@ class TempForm extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    console.log(_min, _max, _risk);
+    console.log(this._min, this._max, this._risk);
   }
 
-
-
 }
+
+export default TempForm;
