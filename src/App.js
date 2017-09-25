@@ -12,7 +12,8 @@ class App extends Component {
     super();
 
     this.state = {
-      weather: []
+      weather: [],
+      hasSubmitted: false
     };
   }
 
@@ -30,7 +31,7 @@ class App extends Component {
           That is the question. To get started, input your weather preferences below:
         </h3>
         <div className="App-Form"> 
-          <TempForm />
+          <TempForm show={this._update.bind(this)}/>
         </div>
         <div className="App-Results">
           <Results />
@@ -46,6 +47,12 @@ class App extends Component {
         const weather = res.data.hourly.data;
         this.setState({ weather });
       });
+  }
+
+  _update() {
+    this.setState({
+      hasSubmitted: true
+    });
   }
 }
 
