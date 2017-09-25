@@ -1,15 +1,6 @@
 import React, {Component} from 'react';
 
 class TempForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      _min: '',
-      _max: '',
-      _risk: ''
-    };
-  }
-
   render() {
     return (
       <form className="App-form" onSubmit={this._handleSubmit.bind(this)}>
@@ -31,9 +22,9 @@ class TempForm extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    this.setState({ _min: this._min.value, _max: this._max.value, _risk: this._risk.value});
-    this.props.show();
+    this.props.choices(this._min.value, this._max.value, this._risk.value);
   }
+
 
 }
 

@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       weather: [],
       hasSubmitted: false,
-      verdict: "bike"
+      shouldBike: false
     };
   }
 
@@ -33,10 +33,10 @@ class App extends Component {
             That is the question. To get started, input your weather preferences below:
           </h3>
           <div className="App-Form"> 
-            <TempForm show={this._update.bind(this)}/>
+            <TempForm weather={this.state.weather} choices={this._update.bind(this)}/>
           </div>
           <div className="App-Results">
-            {this.state.hasSubmitted ? <Results pick={this.state.verdict}/> : <br />}
+            {this.state.hasSubmitted ? <Results pick={this.state.shouldBike}/> : <br />}
           </div>
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </div>
@@ -51,10 +51,20 @@ class App extends Component {
       });
   }
 
-  _update() {
+  _update(min, max, risk) {
+    this._bikeOrMetro(min, max, risk);
     this.setState({
       hasSubmitted: true
     });
+  }
+
+   _bikeOrMetro(min, max, risk) {
+    const weather = this.state.weather;
+    console.log(weather);
+    console.log(min, max, risk);
+    if (weather.temperature < max && weather.temperature > min && weather.precipProbability < risk/100) {
+      this.setState({ shouldBike: !this.state.shouldBike});
+    }
   }
 }
 
