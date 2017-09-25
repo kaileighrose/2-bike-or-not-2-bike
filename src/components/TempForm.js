@@ -19,7 +19,7 @@ class TempForm extends Component {
       </form>
     );
   }
-
+//handler for form submission event that passes form values to Parent
   _handleSubmit(event) {
     event.preventDefault();
     this.props.choices(this._min.value, this._max.value, this._risk.value);
