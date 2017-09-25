@@ -34,10 +34,10 @@ class App extends Component {
           <TempForm show={this._update.bind(this)}/>
         </div>
         <div className="App-Results">
-          <Results />
+          {this.state.hasSubmitted ? <Results /> : <br />}
         </div>
         <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-        </div>
+      </div>
     );
   }
 //
