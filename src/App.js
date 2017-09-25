@@ -13,7 +13,8 @@ class App extends Component {
 
     this.state = {
       weather: [],
-      hasSubmitted: false
+      hasSubmitted: false,
+      verdict: "bike"
     };
   }
 
@@ -27,16 +28,18 @@ class App extends Component {
         <div className="App-header">
           <h2>To Bike or Not to Bike?</h2>
         </div>
-        <h3 className="App-intro">
-          That is the question. To get started, input your weather preferences below:
-        </h3>
-        <div className="App-Form"> 
-          <TempForm show={this._update.bind(this)}/>
+        <div className="App-body">
+          <h3 className="App-intro">
+            That is the question. To get started, input your weather preferences below:
+          </h3>
+          <div className="App-Form"> 
+            <TempForm show={this._update.bind(this)}/>
+          </div>
+          <div className="App-Results">
+            {this.state.hasSubmitted ? <Results pick={this.state.verdict}/> : <br />}
+          </div>
+          <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </div>
-        <div className="App-Results">
-          {this.state.hasSubmitted ? <Results /> : <br />}
-        </div>
-        <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
       </div>
     );
   }
@@ -44,8 +47,7 @@ class App extends Component {
   _fetchWeather() {
     axios.get('https://1miudhz7a9.execute-api.us-east-1.amazonaws.com/dev/forecast/38.8899,77.0090')
       .then(res => {
-        const weather = res.data.hourly.data;
-        this.setState({ weather });
+        this.setState({ weather: res.data.currently });
       });
   }
 
